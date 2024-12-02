@@ -8,7 +8,7 @@ class Webscrape:
         driver.get(page_url)
         return driver
 
-    def get_data(self) -> list:
+    def get_data(self,driver) -> list:
         big = []
         for x in range(100):
             try:
