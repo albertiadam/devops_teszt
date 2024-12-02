@@ -1,3 +1,5 @@
+""" Purpose of this file is to gather name, price and rating for different products from emag, then put them into a df and aggregate them """
+
 from library import *
 class Webscrape:
     def __init__(self):
@@ -9,6 +11,14 @@ class Webscrape:
         return driver
 
     def get_data(self,driver) -> list:
+        """Summary
+            Gathers the data from the given url, by predefined xpath
+        Args:
+            driver (webdriver): Driver used for the browser with the opened site
+
+        Returns:
+            list: Returns the gathered data by xpath from the site
+        """
         big = []
         for x in range(100):
             try:
@@ -23,6 +33,14 @@ class Webscrape:
         return big
 
     def create_df(self,data_list:list) -> tuple:
+        """Summary
+
+        Args:
+            data_list (list): Gathered data, output of get_data()
+
+        Returns:
+            tuple: 2 df, one with all data, one which is aggregated by mean,min,max
+        """
         tvk = pd.DataFrame(data_list)
         tvk = tvk.rename(columns={0:'Név',1:'Ár',2:'Értékelés'})
         tvk['Ár'] = tvk['Ár'].apply(lambda x: int(x[:-3].replace(".","")))

@@ -1,3 +1,5 @@
+""" Runs the script for webscraping """
+
 from library import *
 from utils import Webscrape
 
