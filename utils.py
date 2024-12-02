@@ -10,12 +10,12 @@ class Webscrape:
         driver.get(page_url)
         return driver
 
-    def get_data(self,driver) -> list:
+    def get_data(self,driver:webdriver,buffer:int) -> list:
         """Summary
             Gathers the data from the given url, by predefined xpath
         Args:
             driver (webdriver): Driver used for the browser with the opened site
-
+            buffer (int): The number of elements to iterate through
         Returns:
             list: Returns the gathered data by xpath from the site
         """
@@ -30,6 +30,7 @@ class Webscrape:
                 big.append(lista)
             except:
                 print("")
+        driver.quit()
         return big
 
     def create_df(self,data_list:list) -> tuple:
