@@ -19,19 +19,19 @@ class Webscrape:
         Returns:
             list: Returns the gathered data by xpath from the site
         """
-        big = []
+        data = []
         for x in range(100):
             try:
-                fasz = driver.find_elements(By.XPATH, f'//*[@id="card_grid"]/div[{x}]/div/div/div[3]/div/h2/a')
-                asd = driver.find_elements(By.XPATH, f'//*[@id="card_grid"]/div[{x}]/div/div/div[4]/div[1]/p[2]')
-                zsar = driver.find_elements(By.XPATH, f'//*[@id="card_grid"]/div[{x}]/div/div/div[3]/div/div[1]/a/div[2]/span[1]')
-                print(fasz[0].text, asd[0].text, zsar[0].text)
-                lista = [fasz[0].text,asd[0].text,zsar[0].text]
-                big.append(lista)
+                name = driver.find_elements(By.XPATH, f'//*[@id="card_grid"]/div[{x}]/div/div/div[3]/div/h2/a')
+                price = driver.find_elements(By.XPATH, f'//*[@id="card_grid"]/div[{x}]/div/div/div[4]/div[1]/p[2]')
+                rating = driver.find_elements(By.XPATH, f'//*[@id="card_grid"]/div[{x}]/div/div/div[3]/div/div[1]/a/div[2]/span[1]')
+                print(name[0].text, price[0].text, rating[0].text)
+                sub_list = [name[0].text,price[0].text,rating[0].text]
+                data = []
             except:
                 print("")
         driver.quit()
-        return big
+        return data
 
     def create_df(self,data_list:list) -> tuple:
         """Summary
