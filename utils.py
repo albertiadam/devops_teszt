@@ -20,7 +20,7 @@ class Webscrape:
             list: Returns the gathered data by xpath from the site
         """
         data = []
-        for x in range(100):
+        for x in range(buffer):
             try:
                 name = driver.find_elements(By.XPATH, f'//*[@id="card_grid"]/div[{x}]/div/div/div[3]/div/h2/a')
                 price = driver.find_elements(By.XPATH, f'//*[@id="card_grid"]/div[{x}]/div/div/div[4]/div[1]/p[2]')
